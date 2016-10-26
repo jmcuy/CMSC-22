@@ -5,7 +5,7 @@ import java.awt.event.*;
 import java.util.Random;
 
 /**
- * Created by JHESSA B. on 25/10/2016.
+ * Created by JHESSA  on 25/10/2016.
  */
 public class RPS extends Frame {
     private Random rand = new Random();
@@ -20,8 +20,7 @@ public class RPS extends Frame {
         setSize(250,400);
         setLocation(550,200);
         setResizable(false);
-        Font fo = new Font("doesn'tmatter",Font.BOLD,12);
-        setFont(fo);
+
     }
     public RPS(){
         paint();
@@ -34,7 +33,10 @@ public class RPS extends Frame {
         Checkbox lizard = new Checkbox("LIZARD", c, false);
         Checkbox spock = new Checkbox("SPOCK",c,false);
 
+        Font fo = new Font(Font.SERIF, Font.BOLD,14);
+
         Button button = new Button("RockPaperScissorsSLizardSpock!!");
+        button.setFont(fo);
         TextArea text = new TextArea("Results:",5,20,TextArea.SCROLLBARS_NONE);
 
         Label player = new Label("Player's score:");
