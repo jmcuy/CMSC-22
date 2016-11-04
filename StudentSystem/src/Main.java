@@ -84,12 +84,9 @@ public class Main implements  Serializable{
                 if (!file.exists()) {
                     file.createNewFile();
                 }
-                FileWriter fw = new FileWriter(file);
-                BufferedWriter bw = new BufferedWriter(fw);
-
                 ObjectOutputStream ob = new ObjectOutputStream(new FileOutputStream(file));
                 ob.writeObject(l);
-                bw.close();
+                ob.close();
                 System.out.println("Done");
 
             } catch (IOException e) {
