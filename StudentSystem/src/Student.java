@@ -1,7 +1,7 @@
 import java.io.Serializable;
 
 /**
- * Created by Arvin on 10/15/2016.
+ * Created by Jhessa from Arvin's code on 10/15/2016.
  */
 public class Student implements Serializable{
     private String studentNumber;
