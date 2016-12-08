@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -10,13 +11,13 @@ public class Rule30 {
 
     public Rule30(int size){
         this.size = size;
-        for(int i = 0; i < size; i++){
-            if(i == size / 2){
-                cells += "1";
-            } else {
-                cells += "0";
-            }
+        if(size > 0){
+            char[] arr = new char[size];
+            Arrays.fill(arr, '0');
+            arr[size / 2] = '1';
+            cells = new String(arr);
         }
+
     }
     public String rules(String s){
         int index = Integer.parseInt(s,2);
@@ -51,3 +52,12 @@ public class Rule30 {
 
 
 }
+
+
+
+
+
+
+
+
+

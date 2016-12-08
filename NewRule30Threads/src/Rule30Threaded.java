@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by thegi on 08/12/2016.
  */
@@ -8,12 +10,11 @@ public class Rule30Threaded {
 
     public Rule30Threaded(int size) {
         this.size = size;
-        for(int i = 0; i < size; i++){
-            if(i == size / 2){
-                cells += "1";
-            } else {
-                cells += "0";
-            }
+        if(size > 0){
+            char[] arr = new char[size];
+            Arrays.fill(arr, '0');
+            arr[size / 2] = '1';
+            cells = new String(arr);
         }
     }
     public void print(String prev){
@@ -22,40 +23,42 @@ public class Rule30Threaded {
         }
         System.out.print("\n");
     }
-    public void nextGen(){
+    public void nextGen() throws Exception{
         int numThreads = THREAD_COUNT;
+        int start;
+        int end;
         if (size < THREAD_COUNT){
             numThreads = size;
         }
-        int range = size / numThreads;
+        int threadRange = size / numThreads;
+
+
         String prev = cells;
         print(prev);
         Threaded[] threads = new Threaded[numThreads];
-        int start;
+
         for (int i = 0; i < size - 1; i++){
             start = 0;
             for (int t = 0; t < numThreads - 1; t++){
-                threads[t] = new Threaded(prev, start, start + range);
-                start = start + range;
+                end = start + threadRange;
+                threads[t] = new Threaded(prev, start, end);
+                start = end;
             }
             threads[numThreads - 1] = new Threaded(prev, start, size);
 
-            for (int s = 0; s < numThreads; s++){
-                threads[s].start();
+            for (int thread = 0; thread < numThreads; thread++){
+                threads[thread].start();
             }
 
-            for (int j = 0; j < numThreads; j++){
-                while (threads[j].isAlive()){
-                    try{
-                        threads[j].join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            for (int t = 0; t < numThreads; t++){
+                if(threads[t].isAlive()){
+                    threads[t].join();
                 }
             }
+
             prev = "";
-            for (int r = 0; r < numThreads; r++){
-                prev += threads[r].getResult();
+            for (int p = 0; p < numThreads; p++){
+                prev += threads[p].getResult();
             }
             print(prev);
 
