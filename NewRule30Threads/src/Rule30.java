@@ -1,9 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-/**
- * Created by thegi on 08/12/2016.
- */
 public class Rule30 {
     int size;
     String cells = "";
