@@ -1,8 +1,5 @@
 import java.util.Arrays;
 
-/**
- * Created by thegi on 08/12/2016.
- */
 public class Rule30Threaded {
     int size;
     String cells = "";
