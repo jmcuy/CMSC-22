@@ -1,8 +1,5 @@
 import java.util.Scanner;
 
-/**
- * Created by thegi on 08/12/2016.
- */
 public class Rule30Test {
     public static void main(String[] args) throws Exception {
         System.out.print("Enter Row/Col size: ");
